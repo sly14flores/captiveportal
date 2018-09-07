@@ -1,0 +1,35 @@
+<table class="table">
+	<thead>
+		<tr><th>#</th><th>MAC Address</th><th>Active?</th><th>Unlimited?</th><th>Usage Duration</th><th></th></tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="device in devices">
+			<td>{{$index+1}}</td>
+			<td>{{device.mac_address}}</td>
+			<td>
+				<label>
+					<input type="checkbox" class="js-switch" ng-model="device.is_active" ng-disabled="!device.edit">
+				</label>			
+			</td>			
+			<td>
+				<label>
+					<input type="checkbox" class="js-switch" ng-model="device.unlimited" ng-disabled="!device.edit">
+				</label>								
+			</td>
+			<td>
+				<input type="number" class="form-control" ng-model="device.hours_allowed" ng-disabled="!device.edit">
+			</td>
+			<td>
+				<a href="javascript:;" ng-click="users.device(this,device)"><i class="fa" ng-class="{'fa-edit': !device.edit, 'fa-check': device.edit}"></i></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<hr>
+<!-- <form class="form-inline">
+  <div class="form-group">
+	<label>Internet Usage Duration:</label>
+	<input type="number" class="form-control" ng-model="device.hours_allowed">
+  </div>			  
+  <button type="button" style="margin-top: 4px;" class="btn btn-primary">Update</button>
+</form> -->

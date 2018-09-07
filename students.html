@@ -1,0 +1,228 @@
+<?php
+
+require_once 'authentication.php';
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Captive Portal | Lord of Zion Divine School</title>
+	<link rel="icon" type="image/ico" href="favicon.ico">
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- PNotify -->
+    <link href="vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link href="vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="vendors/switchery/dist/switchery.min.css" rel="stylesheet">	
+
+    <!-- Custom Theme Style -->
+    <link href="build/css/custom.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+
+  <body id="main-body" class="nav-md" ng-app="students" ng-controller="studentsCtrl" account-profile>
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><img class="brand-logo" src="img/lzds-logo.png"> <span>LZDS</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="img/avatar.png" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>{{accountProfile.profile.staff}}</h2>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <ul class="nav side-menu">
+				<!-- menu -->		
+                  <li class="active"><a><i class="fa fa-cog"></i> Manage <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li class="active"><a href="students.html">Students</a></li>					
+                      <li><a href="settings.html">Settings</a></li>					
+                    </ul>
+                  </li>
+                <!-- menu -->
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen" href="javascript:;" ng-click="fullscreen.toggleFullScreen('#main-body')">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>			
+              <a data-toggle="tooltip" data-placement="top" title="Settings" href="javascript:;">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Profile" href="javascript:;">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              </a>			  
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="javascript:;" logout-account>
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="img/avatar.png" alt="">{{accountProfile.profile.staff}}
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right" drop-down></ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>{{views.title}}</h3>
+              </div>
+              <div class="title_right"></div>
+            </div>
+
+            <div class="clearfix"></div>
+			<hr>
+			<form class="form-inline">
+			  <div class="form-group">
+				<label>School Year:</label>
+				<select class="form-control" ng-model="filter.school_year" ng-options="sy.school_year for sy in school_years track by sy.id"></select>
+			  </div>			  
+			  <button type="button" class="btn btn-default" style="margin-top: 5px;" ng-click="users.filter(this)">Go!</button>
+			</form>
+			<hr>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="row">
+					<div class="col-md-3 col-sm-5 col-xs-12 form-group pull-right top_search">
+					  <div class="input-group">
+						<input type="text" class="form-control" ng-model="views.search" placeholder="Search for..." ng-disabled="views.list">
+						<span class="input-group-btn">
+						  <button class="btn btn-default" type="button">&nbsp;</button>
+						</span>
+					  </div>
+					</div>				
+				</div>
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>{{views.panel_title}}</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div id="x_content" class="x_content">
+					<table class="table">
+						<thead>
+							<tr><th>School Year</th><th>School ID</th><th>Last Name</th><th>First Name</th><th>Middle Name</th><th>No of Devices</th><th></th></tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="user in filterData = (data.users | filter: views.search) | pagination: currentPage:pageSize">
+								<td>{{user.school_year}}</td><td>{{user.school_id}}</td><td>{{user.last_name}}</td><td>{{user.first_name}}</td><td>{{user.middle_name}}</td><td>{{user.no_of_devices}}</td>
+								<td><a href="javascript:;" ng-click="users.view(this,user)"><i class="fa fa-search"></i></a></td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="7" style="text-align: center;">
+									<ul uib-pagination boundary-links="true" total-items="filterData.length" max-size="maxSize" items-per-page="pageSize" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Lord of Zion Divine School System
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="vendors/nprogress/nprogress.js"></script>
+    <!-- PNotify -->
+    <script src="vendors/pnotify/dist/pnotify.js"></script>
+    <script src="vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script>   
+    <!-- Switchery -->
+    <script src="vendors/switchery/dist/switchery.min.js"></script>		
+	
+    <!-- Custom Theme Scripts -->
+    <script src="build/js/custom.js"></script>
+
+    <script src="vendors/bootbox/bootbox.min.js"></script>
+    <script src="vendors/blockUI/jquery.blockUI.js"></script>	
+	
+	<script src="angular/angular.min.js"></script>	
+	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
+
+	<script src="modules/bootstrap-modal.js"></script>
+	<script src="modules/account.js"></script>
+	<script src="modules/fullscreen.js"></script>
+	<script src="modules/blockui.js"></script>	
+	<script src="modules/pnotify.js"></script>	
+	<script src="modules/students.js"></script>
+	
+	<script src="controllers/students.js"></script>
+
+  </body>
+</html>

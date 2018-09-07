@@ -1,0 +1,12 @@
+<form novalidate>
+<button type="button" class="btn btn-primary" ng-click="configs.startDownloadSy(this)">Start</button>
+<hr>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+	<label>{{import.progress.school_years.status}}</label>
+	<div class="progress">
+		<div class="progress-bar progress-bar-info" data-transitiongoal="{{import.progress.school_years.progress}}" aria-valuenow="{{import.progress.school_years.progress}}" style="width: {{import.progress.school_years.progress}}%;"></div>
+    </div>
+  </div>
+</div>
+</form>

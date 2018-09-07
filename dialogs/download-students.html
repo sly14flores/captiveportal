@@ -1,0 +1,18 @@
+<form class="form-inline">
+  <div class="form-group">
+	<label>School Year:</label>
+	<select class="form-control" ng-model="filter.school_year" ng-options="sy.school_year for sy in school_years track by sy.id"></select>
+  </div>			  
+  <button type="button" style="margin-top: 4px;" class="btn btn-primary" ng-click="configs.startDownloadStudents(this)">Start</button>
+</form>
+<hr>
+<form novalidate>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+	<label>{{import.progress.students.status}}</label>
+	<div class="progress">
+		<div class="progress-bar progress-bar-info" data-transitiongoal="{{import.progress.students.progress}}" aria-valuenow="{{import.progress.students.progress}}" style="width: {{import.progress.students.progress}}%;"></div>
+    </div>
+  </div>
+</div>
+</form>

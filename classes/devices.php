@@ -53,7 +53,7 @@ class devices {
 		$hours_allowed = (count($get_hours_allowed))?$get_hours_allowed[0]['property_value']:1;
 		
 		$this->con->table = "devices";
-		$new = $this->con->insertData(array("student_id"=>$student['id'],"mac_address"=>$this->mac,"is_active"=>1,"system_log"=>"CURRENT_TIMESTAMP","session_datetime"=>"CURRENT_TIMESTAMP","hours_allowed"=>$hours_allowed));
+		$new = $this->con->insertData(array("student_id"=>$student['id'],"mac_address"=>$this->mac,"ip_address"=>$this->ip,"is_active"=>1,"system_log"=>"CURRENT_TIMESTAMP","session_datetime"=>"CURRENT_TIMESTAMP","hours_allowed"=>$hours_allowed));
 		
 		$this->bypass();		
 		sleep(1);
@@ -100,7 +100,7 @@ class devices {
 		} else { # new day session
 
 			$this->con->table = "devices";
-			$old = $this->con->updateData(array("id"=>$device['id'],"session_datetime"=>"CURRENT_TIMESTAMP"),'id');
+			$old = $this->con->updateData(array("id"=>$device['id'],"ip_address"=>$this->ip,"session_datetime"=>"CURRENT_TIMESTAMP"),'id');
 			
 			$this->bypass();			
 			sleep(1);

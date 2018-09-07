@@ -13,7 +13,7 @@ $devices = $con->getData($sql);
 
 foreach ($devices as $device) {
 
-	if (strtotime($device['expiration'])>date("Y-m-d H:i:s")) continue;
+	if (strtotime($device['expiration'])>strtotime(date("Y-m-d H:i:s"))) continue;
 
 	exec("sudo iptables -D internet -t mangle -m mac --mac-source ".$device['mac_address']." -j RETURN");
 	exec("sudo rmtrack ".$device['ip_address']);

@@ -48,7 +48,7 @@ class devices {
 	
 	private function new_device($student) {
 		
-		$get_hours_allowed = $con->getData("SELECT property_value FROM settings WHERE property_description = 'internet_duration'");
+		$get_hours_allowed = $this->con->getData("SELECT property_value FROM settings WHERE property_description = 'internet_duration'");
 		
 		$hours_allowed = (count($get_hours_allowed))?$get_hours_allowed[0]['property_value']:1;
 		

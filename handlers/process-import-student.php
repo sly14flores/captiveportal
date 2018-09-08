@@ -25,7 +25,7 @@ if (count($check)===0) {
 	
 } else {
 	
-	$update = $con->updateData(array("enrollment_id"=>$_POST['student']['id'],"school_id"=>$_POST['student']['school_id'],"system_log"=>"CURRENT_TIMESTAMP"),"enrollment_id");
+	$update = $con->updateData(array("enrollment_id"=>$_POST['student']['id'],"school_id"=>$_POST['student']['school_id'],"date_of_birth"=>$_POST['student']['date_of_birth'],"system_log"=>"CURRENT_TIMESTAMP"),"enrollment_id");
 	
 };
 

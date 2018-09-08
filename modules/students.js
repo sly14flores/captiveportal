@@ -6,6 +6,9 @@ angular.module('users-module', ['ui.bootstrap','bootstrap-modal','pnotify-module
 		
 		self.data = function(scope) {
 			
+			// scope.host = "localhost";
+			scope.host = "lzds.blogsite.org";			
+			
 			scope.views = {};
 			
 			scope.views.currentPage = 1;
@@ -104,6 +107,45 @@ angular.module('users-module', ['ui.bootstrap','bootstrap-modal','pnotify-module
 
 			});				
 			
+		};
+		
+		self.update = function(scope,user) {
+			
+			blockUI.show("Updating student info...");
+			
+			$http({
+			  method: 'POST',
+			  url: 'http://'+scope.host+'/lzds/api/fetch-student.php',
+			  headers : {'Content-Type': 'application/x-www-form-urlencoded'},		  
+			  data: {enrollment_id: user.enrollment_id}
+			}).then(function mySucces(response) {
+				
+				update(response.data);
+				
+			}, function myError(response) {
+
+				blockUI.hide();			
+				
+			});
+			
+			function update(student) {
+
+				$http({
+				  method: 'POST',
+				  url: 'handlers/update-student-info.php',
+				  data: {student: student}
+				}).then(function mySucces(response) {
+
+					blockUI.hide();					
+
+				}, function myError(response) {
+
+					blockUI.hide();
+
+				});	
+				
+			};
+
 		};
 		
 		self.device = function(scope,device) {

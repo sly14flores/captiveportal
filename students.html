@@ -156,17 +156,20 @@ require_once 'authentication.php';
                   <div id="x_content" class="x_content">
 					<table class="table">
 						<thead>
-							<tr><th>School Year</th><th>School ID</th><th>Last Name</th><th>First Name</th><th>Middle Name</th><th>No of Devices</th><th></th></tr>
+							<tr><th>School Year</th><th>School ID</th><td>Birthday</td><th>Last Name</th><th>First Name</th><th>Middle Name</th><th>No of Devices</th><th></th></tr>
 						</thead>
 						<tbody>
 							<tr ng-repeat="user in filterData = (data.users | filter: views.search) | pagination: currentPage:pageSize">
-								<td>{{user.school_year}}</td><td>{{user.school_id}}</td><td>{{user.last_name}}</td><td>{{user.first_name}}</td><td>{{user.middle_name}}</td><td>{{user.no_of_devices}}</td>
-								<td><a href="javascript:;" ng-click="users.view(this,user)"><i class="fa fa-search"></i></a></td>
+								<td>{{user.school_year}}</td><td>{{user.school_id}}</td><td>{{user.birthday}}</td><td>{{user.last_name}}</td><td>{{user.first_name}}</td><td>{{user.middle_name}}</td><td>{{user.no_of_devices}}</td>
+								<td>
+									<a href="javascript:;" ng-click="users.view(this,user)"><i class="fa fa-search"></i></a>
+									<a href="javascript:;" style="margin-left: 10px;" ng-click="users.update(this,user)"><i class="fa fa-download"></i></a>									
+								</td>
 							</tr>
 						</tbody>
 						<tfoot>
 							<tr>
-								<td colspan="7" style="text-align: center;">
+								<td colspan="8" style="text-align: center;">
 									<ul uib-pagination boundary-links="true" total-items="filterData.length" max-size="maxSize" items-per-page="pageSize" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
 								</td>
 							</tr>

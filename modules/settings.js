@@ -7,7 +7,8 @@ angular.module('settings-module', ['bootstrap-modal','pnotify-module','block-ui'
 		self.data = function(scope) {
 			
 			// scope.host = "localhost";
-			scope.host = "lzds.blogsite.org";
+			// scope.host = "lzds.blogsite.org";
+			scope.host = "192.168.0.20";
 			
 			scope.views = {};
 			
@@ -98,10 +99,9 @@ angular.module('settings-module', ['bootstrap-modal','pnotify-module','block-ui'
 			}).then(function mySucces(response) {
 				
 				scope.import.school_years = response.data;
-				
+				blockUI.hide();				
 				bootstrapModal.box3(scope,'Import School Years','dialogs/download-school-years.html');
 				
-				blockUI.hide();
 				
 			}, function myError(response) {
 
@@ -212,13 +212,13 @@ angular.module('settings-module', ['bootstrap-modal','pnotify-module','block-ui'
 				
 				scope.import.students = response.data;
 				
-				blockUI.hide();				
+				blockUI.hide();	
 				
 				$timeout(function() { processImportStudents(scope,0) }, 200);
 				
 			}, function myError(response) {
 
-				blockUI.hide();			
+				blockUI.hide();	
 				
 			});				
 			

@@ -35,11 +35,11 @@
 			<p>To access Internet you must first provide the following information:</p>			
 		  </div>
           <section class="login_content">
-            <form name="formHolder.login" ng-submit="login(this)" autocomplete="off" novalidate>
+            <form name="formHolder.login" id="login" data-authaction="<?=$_GET['authaction']?>" data-tok="<?=$_GET['tok']?>" ng-submit="login(this)" autocomplete="off" novalidate>
               <h1>Login</h1>
               <div class="form-group">
 				<label>School ID</label>
-                <input type="text" class="form-control name="school_id" ng-model="account.school_id" required autofocus>
+                <input type="text" class="form-control" name="school_id" ng-model="account.school_id" required autofocus>
               </div>
               <div class="form-group">
 				<label>Birthday</label>
@@ -54,7 +54,7 @@
 
               <div class="separator">
                 <div>
-                  <p>&copy; <?php echo date("Y"); ?> All Rights Reserved. Lord of Zion Divine School</p>
+                  <p>{{views.year}} All Rights Reserved. Lord of Zion Divine School</p>
                 </div>
               </div>
             </form>

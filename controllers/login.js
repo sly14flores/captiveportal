@@ -6,6 +6,11 @@ app.controller('loginCtrl',function($scope,loginService) {
 	$scope.views = {};
 	$scope.account = {};
 	
+	$scope.views.year = "";
+	
+	var d = new Date();
+	$scope.views.year = d.getFullYear();
+	
 	$scope.login = loginService.login;
 	
 });

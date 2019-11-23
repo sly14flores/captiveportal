@@ -1,1 +1,0 @@
-ALTER TABLE `devices`  ADD `ip_address` VARCHAR(20) NULL  AFTER `mac_address`;

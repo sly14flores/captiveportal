@@ -3,12 +3,21 @@ angular.module('login-module', []).service('loginService', function($http, $wind
 	this.login = function(scope) {
 		
 		scope.views.incorrect = false;
+		
+		scope.ip_url = "http://192.168.10.1";
 
 		if (validate(scope)) {
 			scope.views.incorrect = true;			
 			scope.views.msg = 'School ID and birthday are required';			
 			return;
 		};
+		
+		let authaction = document.querySelector('#login').dataset.authaction;
+		let authaction_s = authaction.split("?");
+		let clientip_s = authaction_s[1].split("=");
+
+		scope.account.ip = clientip_s[1];
+		scope.account.tok = document.querySelector('#login').dataset.tok;
 		
 		$http({
 		  method: 'POST',
@@ -23,25 +32,29 @@ angular.module('login-module', []).service('loginService', function($http, $wind
 					
 					case "new":
 					
-						$window.location.href = 'activated.html';
+						var redir = scope.ip_url+':2050/nodogsplash_auth/?tok='+response.data.tok+'&redir=';
+						$window.location.href = redir;
 					
 					break;
 					
 					case "old":
 					
-						$window.location.href = 'activated.html';				
+						var redir = scope.ip_url+':2050/nodogsplash_auth/?tok='+response.data.tok+'&redir=';
+						$window.location.href = redir;
 					
 					break;					
 					
 					case "expired":
 					
-						$window.location.href = 'expired.html';					
+						var redir = scope.ip_url+':8000/expired.html';		
+						$window.location.href = redir;
 					
 					break;
 					
 					case "inactive":
 					
-						$window.location.href = 'inactive.html';					
+						var redir = scope.ip_url+':8000/inactive.html';
+						$window.location.href = redir;
 					
 					break;
 					

@@ -1,0 +1,18 @@
+https://pimylifeup.com/raspberry-pi-wireless-access-point/
+https://pimylifeup.com/raspberry-pi-captive-portal/
+
+/etc/nodogsplash/nodogsplash.conf
+overwrite with custom config
+
+auth|deny
+http://192.168.10.1:2050/nodogsplash_auth/?tok=7ccb7b25&redir=
+http://192.168.10.1:2050/nodogsplash_deny/?tok=7ccb7b25&redir=
+
+overwrite /etc/nodogsplash/htdocs/splash.html
+
+apache config
+apache2.conf
+ports.conf
+sites-enabled/000-default.conf
+
+

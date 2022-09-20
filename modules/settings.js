@@ -6,10 +6,8 @@ angular.module('settings-module', ['bootstrap-modal','pnotify-module','block-ui'
 		
 		self.data = function(scope) {
 			
-			// scope.host = "localhost";
-			// scope.host = "lzds.blogsite.org";
-			scope.host = "192.168.0.20";
-			// scope.host = "10.10.26.122";					
+			// scope.host = "192.168.0.20";
+			scope.host = "app.lzds.edu.ph";
 			
 			scope.views = {};
 			
@@ -95,7 +93,7 @@ angular.module('settings-module', ['bootstrap-modal','pnotify-module','block-ui'
 			
 			$http({
 			  method: 'GET',
-			  url: 'http://'+scope.host+'/lzds/api/fetch-school-years.php',
+			  url: 'https://'+scope.host+'/api/fetch-school-years.php',
 			  headers : {'Content-Type': 'application/x-www-form-urlencoded'}			  
 			}).then(function mySucces(response) {
 				
@@ -206,7 +204,7 @@ angular.module('settings-module', ['bootstrap-modal','pnotify-module','block-ui'
 			
 			$http({
 			  method: 'POST',
-			  url: 'http://'+scope.host+'/lzds/api/fetch-students.php',
+			  url: 'https://'+scope.host+'/api/fetch-students.php',
 			  headers : {'Content-Type': 'application/x-www-form-urlencoded'},	  
 			  data: scope.filter.school_year
 			}).then(function mySucces(response) {

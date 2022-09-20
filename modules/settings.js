@@ -9,6 +9,7 @@ angular.module('settings-module', ['bootstrap-modal','pnotify-module','block-ui'
 			// scope.host = "localhost";
 			// scope.host = "lzds.blogsite.org";
 			scope.host = "192.168.0.20";
+			// scope.host = "10.10.26.122";					
 			
 			scope.views = {};
 			

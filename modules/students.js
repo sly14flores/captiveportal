@@ -7,7 +7,9 @@ angular.module('users-module', ['ui.bootstrap','bootstrap-modal','pnotify-module
 		self.data = function(scope) {
 			
 			// scope.host = "localhost";
-			scope.host = "lzds.blogsite.org";			
+			// scope.host = "lzds.blogsite.org";			
+			scope.host = "192.168.0.20";		
+			// scope.host = "10.10.26.122";		
 			
 			scope.views = {};
 			

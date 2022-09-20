@@ -17,12 +17,16 @@ $response = [];
 
 if (count($student)) {
 
-	$ip = $_SERVER['REMOTE_ADDR'];
+	// $ip = $_SERVER['REMOTE_ADDR'];
+	
+	$ip = $account['ip'];
+	$tok = $account['tok'];
 
 	$response["has_record"]=true;
 
-	$device = new devices($con,$ip);
+	$device = new devices($con,$ip,$tok);
 	$response["status"] = $device->check_device($student[0]);
+	$response["tok"] = $tok;
 
 } else {
 	
